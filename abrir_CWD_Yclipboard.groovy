@@ -1,4 +1,4 @@
-//Abrir el mindmap presente ya sea con file Explorer o en el servidor Web
+//Abrir el foldeer del mindmap presente ya sea con file Explorer o en el servidor Web
 import org.freeplane.core.ui.components.UITools
 import javax.swing.*
 import java.nio.file.Path
@@ -76,9 +76,10 @@ panel.add(radioButton6)
 
 def framePadre = UITools.getCurrentFrame()
 def coordenads = framePadre.location
+def dimensions = framePadre.size
 
 frame.getContentPane().add(panel)
-frame.setLocation(coordenads.x.toInteger() + 800, coordenads.y.toInteger() + 500)
+frame.setLocation((coordenads.x + 0.5*dimensions.width - 234).toInteger(), (coordenads.y + 0.5*dimensions.height - 33).toInteger())
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 frame.pack()
 frame.visible = true
