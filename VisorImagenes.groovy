@@ -77,6 +77,7 @@ if (miFoto.exists()){
     
     frame.getContentPane().add(label)
     frame.setLocation(punto.x.toInteger(), punto.y.toInteger())
+	frame.setUndecorated(true);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
     frame.pack()
     frame.visible = true
