@@ -1,4 +1,4 @@
-//Abrir el foldeer del mindmap presente ya sea con file Explorer o en el servidor Web
+//Abrir el mindmap presente ya sea con file Explorer o en el servidor Web
 import org.freeplane.core.ui.components.UITools
 import javax.swing.*
 import java.nio.file.Path
@@ -11,6 +11,7 @@ def buttonGroup = new ButtonGroup()
 def radioButton1 = new JRadioButton("lcl/raiz")
 def radioButton2 = new JRadioButton("lcl/foto")
 def radioButton3 = new JRadioButton("lcl/video")
+def radioButton7 = new JRadioButton("lcl/0softo")
 def radioButton4 = new JRadioButton("web/raiz")
 def radioButton5 = new JRadioButton("web/foto")
 def radioButton6 = new JRadioButton("web/video")
@@ -31,6 +32,12 @@ radioButton2.addActionListener {
 radioButton3.addActionListener {
     if (radioButton3.isSelected()) {
         Desktop.getDesktop().open(new File(mmpPathAbs.toString() + "/0douga"))
+        frame.dispose()
+    }
+}
+radioButton7.addActionListener {
+    if (radioButton7.isSelected()) {
+        Desktop.getDesktop().open(new File(mmpPathAbs.toString() + "/0softo"))
         frame.dispose()
     }
 }
@@ -62,6 +69,7 @@ radioButton6.addActionListener {
 buttonGroup.add(radioButton1)
 buttonGroup.add(radioButton2)
 buttonGroup.add(radioButton3)
+buttonGroup.add(radioButton7)
 buttonGroup.add(radioButton4)
 buttonGroup.add(radioButton5)
 buttonGroup.add(radioButton6)
@@ -70,6 +78,7 @@ def panel = new JPanel()
 panel.add(radioButton1)
 panel.add(radioButton2)
 panel.add(radioButton3)
+panel.add(radioButton7)
 panel.add(radioButton4)
 panel.add(radioButton5)
 panel.add(radioButton6)
