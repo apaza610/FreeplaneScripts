@@ -3,8 +3,8 @@
 |
 |  Purpose: Si la foto esta en el Node Core (y no en lower section) este
 |           programa abrira dicha foto en un visor
-|           ademas usando arrow keys modifica el tag <img > para:
-			incluir(↓), quitar(↑), redimensionar(← →) width="" height=""
+|           usando mouseWheel modifica el tag <img > para: redimensionar(← →) width="" height=""
+			usando flechas puede incluir(↓), quitar(↑), los atributos width="" height=""
 |
 |  Pre-condition: La foto y el MapaMental deben tener una raiz comun, en GNU eso
 |                 es automatico, pero en Windows (multiples root) significa que 
@@ -72,7 +72,6 @@ if (miFoto.exists()){
     label.icon = imageIcon
     
     //*******************************  
-    def robot = new Robot()
     def punto = MouseInfo.getPointerInfo().getLocation()
     
     frame.getContentPane().add(label)
@@ -93,18 +92,25 @@ if (miFoto.exists()){
                     case KeyEvent.VK_DOWN:
                         anchoAltoReset(pathAbsolFoto, miMatcher, cadenaHtml)
                         break
-                    case KeyEvent.VK_LEFT:
-                        anchoAltoCambiar(0.9, pathAbsolFoto, miMatcher, cadenaHtml)
-                        break
-                    case KeyEvent.VK_RIGHT:
-                        anchoAltoCambiar(1.1, pathAbsolFoto, miMatcher, cadenaHtml)
-                        break
                     case KeyEvent.VK_ESCAPE:
                         frame.dispose()
                         break
                 }
         }
     }) 
+    frame.addMouseWheelListener(new MouseWheelListener(){
+        public void mouseWheelMoved(MouseWheelEvent e){
+//             JOptionPane.showMessageDialog(null,e.getWheelRotation());
+            switch(e.getWheelRotation()){
+                case -1:
+                    anchoAltoCambiar(1.1, pathAbsolFoto, miMatcher, cadenaHtml)
+                    break;
+                case 1:
+                    anchoAltoCambiar(0.9, pathAbsolFoto, miMatcher, cadenaHtml)
+                    break;
+            }
+        }
+    })
 }
 
 def anchoAltoReset(pathAbsolFoto, miMatcher, cadenaHtml){
