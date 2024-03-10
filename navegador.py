@@ -1,0 +1,82 @@
+#---------------------------------------------------------------
+# miniNavegador: for mindmaps as an easy/fast way to visualize:
+# boton1: pictures in node (embedded in <img>)or interact with webGames
+# boton2: pictures in details of node (external images)
+# boton3: to open webGames or webPages
+
+from tkinter import *
+from tkinter import messagebox
+import webview 
+from pathlib import Path
+from PIL import Image
+from lxml import etree
+import sys
+import math
+import re
+from pynput import keyboard
+
+
+def destroy(window):
+    window.destroy()
+
+def main():
+	tk = Tk()
+	# sys.argv[1] = r'D:\apz\maps\progr\web\js\0libs\ctjs\0docum\0otros\Asteroids.svg'
+	
+	if len(sys.argv) > 1:
+		if "http" in sys.argv[1]:											# caso: sitio web o juego
+			#creacion de ventana visor de paginas web
+			window = webview.create_window('~~', sys.argv[1], None, None, 300, 300, frameless=True, x=tk.winfo_pointerx(), y=tk.winfo_pointery())
+			
+			# Create a listener for keyboard events
+			listener = keyboard.Listener(on_press=lambda key: key == keyboard.Key.esc and window.destroy())
+			listener.start()
+
+			webview.start()
+		else:																# caso: algun tipo de imagen
+			if sys.argv[1].endswith('.svg'):
+				tree = etree.parse(sys.argv[1])
+				root = tree.getroot()
+				ancho = 100
+				alto = 100
+				ancho1 = root.attrib.get('width')
+				alto1 = root.attrib.get('height')
+				if "px" in ancho1:
+					ancho = int( ancho1.replace('px','') )
+					alto  = int( alto1.replace('px','') )
+				elif "mm" in ancho1:
+					ancho = int( float(ancho1.replace('mm','')) * 3.78 )
+					alto = int( float(alto1.replace('mm','')) * 3.78 )
+
+				uri_path = Path(sys.argv[1]).as_uri()
+
+				#creacion de ventana visor de paginas web
+				window = webview.create_window('~~', uri_path, None, None, ancho, alto, frameless=True, x=tk.winfo_pointerx(), y=tk.winfo_pointery())
+
+				# Create a listener for keyboard events
+				listener = keyboard.Listener(on_press=lambda key: key == keyboard.Key.esc and window.destroy())
+				listener.start()
+
+				webview.start()			
+			else:
+				img = Image.open(sys.argv[1])
+				ancho = img.width + 5	#393, 118
+				alto = img.height + 5
+				uri_path = Path(sys.argv[1]).as_uri()
+
+				#creacion de ventana visor de paginas web
+				window = webview.create_window('~~', uri_path, None, None, ancho, alto, frameless=True, x=tk.winfo_pointerx(), y=tk.winfo_pointery())
+
+				# Create a listener for keyboard events
+				listener = keyboard.Listener(on_press=lambda key: key == keyboard.Key.esc and window.destroy())
+				listener.start()
+
+				webview.start()
+	else:
+		ventana = webview.create_window('Default', "https://godotengine.org/")
+
+	# tk.bind('<Escape>', lambda: tk.destroy())
+	webview.start()
+
+if __name__ == '__main__':
+	main()
