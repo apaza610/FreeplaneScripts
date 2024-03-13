@@ -1,4 +1,5 @@
 import javax.swing.*
+import java.awt.FlowLayout;
 
 import org.freeplane.features.map.NodeModel
 import org.freeplane.features.mode.Controller
@@ -72,18 +73,34 @@ boton3.addActionListener(new ActionListener() {
             links2 = nodes.'**'.findAll { it.name() == 'a' }*.@href*.text()
         }
         def links = links1 + links2
-        // 
-        int opcion = 0
-        if(links.size > 1){
-            opcion = JOptionPane.showInputDialog("elegi del rango: 1,...,${links.size}", "").toInteger();
-            opcion--
-        }
-        pathFotoJuego = links[opcion]
         frame.dispose()
-        //------------------python miniNavegador------------------
-        print "abriendo: ${pathFotoJuego}"
-        def command = ["python", "F:/navegador.py", pathFotoJuego]
-        command.execute()
+        
+		//def opcion = 0
+        if(links.size > 1){
+            //opcion = 0	//JOptionPane.showInputDialog("elegi del rango: 1,...,${links.size}", "").toInteger();
+			def frame2 = new JFrame('JFrame with Buttons')
+			frame2.setSize(200, 80)
+			frame2.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+			frame2.layout = new FlowLayout()
+			frame2.setLocation(mouseCoordenadas)
+
+			for(int n = 0 ; n < links.size; n++){
+				def btnOpcion = new JButton("$n")
+				btnOpcion.addActionListener({
+					frame2.dispose()
+					//------------------python miniNavegador------------------
+					//JOptionPane.showMessageDialog(null, n);
+					def command = ["python", "F:/navegador.py", links[btnOpcion.getText().toInteger()], (int)mouseCoordenadas.x, (int)mouseCoordenadas.y]
+					command.execute()
+				})
+				frame2.add(btnOpcion)
+			}
+			frame2.visible = true
+        }
+		else{
+			def command = ["python", "F:/navegador.py", links[0], (int)mouseCoordenadas.x, (int)mouseCoordenadas.y]
+			command.execute()
+		}
     }
 })
 
@@ -92,8 +109,8 @@ frame.add(boton1)
 frame.add(boton2)
 frame.add(boton3)
 
-frame.setSize(300, 40)
-frame.setLocation(mouseCoordenadas)
+frame.setSize(300, 30)
+frame.setLocation( (int)mouseCoordenadas.x - 150, (int)mouseCoordenadas.y-15)
 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
 
 // Add a key listener to the frame
