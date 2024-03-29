@@ -8,11 +8,11 @@ import java.net.URI
 
 def frame = new JFrame("Seleccionar Destino:")
 def buttonGroup = new ButtonGroup()
-def radioButton1 = new JRadioButton("lcl/raiz")
-def radioButton2 = new JRadioButton("lcl/foto")
-def radioButton3 = new JRadioButton("lcl/video")
-def radioButton7 = new JRadioButton("lcl/0softo")
-def radioButton4 = new JRadioButton("web/raiz")
+def radioButton1 = new JRadioButton("base")
+def radioButton2 = new JRadioButton("foto")
+def radioButton3 = new JRadioButton("video")
+def radioButton7 = new JRadioButton("0softo")
+def radioButton4 = new JRadioButton("web/base")
 def radioButton5 = new JRadioButton("web/foto")
 def radioButton6 = new JRadioButton("web/video")
 
