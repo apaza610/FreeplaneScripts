@@ -1,7 +1,7 @@
 /****************************************
 * Dado a que Freeplane tiene un Bug que no deja poner Paths relativos en imagenes Externas
 * este programa convierte Paths absolutos a relativos para imagenes Externas
-* homar orozco - 2023
+* homar orozco apaza - 2024
 ****************************************/
 import java.nio.file.Path;
 import java.nio.file.Paths;
