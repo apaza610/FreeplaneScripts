@@ -1,3 +1,16 @@
+/*---------------------------------------------------------------------
+|  Purpose: muestra 3 botones con los que enviar fotos o webGame (as paths)
+|           a un script en python que tiene su webView
+|
+|  Pre-condition: Los requerimientos (librerias) del script navegador.py deben ser satisfechos
+|
+|   注意: Este programa requiere permiso de ejecucion de programas externos !!
+|
+|   私について: Homar Richard Orozco Apaza
+|               La Paz - Bolivia
+|                       2024
+*-------------------------------------------------------------------*/
+
 import javax.swing.*
 import java.awt.FlowLayout;
 
