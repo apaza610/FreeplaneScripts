@@ -1,4 +1,8 @@
 #---------------------------------------------------------------
+# pip install pywebview		#para crear el webView
+# pip install pynput		#para controlar mouse & keyboard
+# pip install pillow		#image library
+# pip install lxml		#para el manejo de xml, html
 # miniNavegador: for mindmaps as an easy/fast way to visualize:
 # boton1: pictures in node (embedded in <img>)or interact with webGames
 # boton2: pictures in details of node (external images)
