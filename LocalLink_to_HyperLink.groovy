@@ -13,5 +13,5 @@ String linkPathCanonico = f.getCanonicalPath()      // D:\mmpsProg\Prog_Java\104
 String linkPathWeb = linkPathCanonico.replace("D:","http://192.168.1.12/miServer")
 linkPathWeb = linkPathWeb.replace("\\","/")         // http://192.168.1.12/miServer/mmpsProg/Prog_Java/104_documentos/how_split_a_string.pdf
 
-print("\n----------***------------------------\n")
+print("\n----------***----------\n")
 node.link.text = linkPathWeb
