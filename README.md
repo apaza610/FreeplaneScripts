@@ -1,6 +1,6 @@
 # Scripts to automate/complement Freeplane
 ## Watch image/webGame in a separate web viewer
-The navegador.py & abrir_LINK_en_miniBrowser.groovy scripts are used to watch an image or webgame in a mini webBrowser like this:
+The navegador.py & abrir_LINK_en_miniBrowser.groovy scripts are used to watch an image or webgame in a mini webBrowser like this:  
 ![explicacion1](https://github.com/apaza610/FreeplaneScripts/assets/10149862/e9eba15c-a512-4b78-8b64-eb1576dae915)
 
 ## Open 📁 of current mindmap
