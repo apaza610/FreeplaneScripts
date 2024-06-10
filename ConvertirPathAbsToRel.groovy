@@ -14,6 +14,7 @@ tmpString = tmpString.replace("file:///","")    // D:/apz/maps/gdev/gral/unity/0
 Path imgPathAbs = Paths.get(tmpString)
 Path imgPathRel = mmpPathAbs.relativize(imgPathAbs)
 c.statusInfo = imgPathRel.toString()
+
 // Por alguna razon basta con usar getUri() y setUri()
 // node.externalObject.setUri("file:///D:/apz/maps/gdev/gral/unity/0fotos/colorSpace.png")
 node.externalObject.setUri(node.externalObject.getUri())
