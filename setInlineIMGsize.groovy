@@ -35,7 +35,7 @@ import org.jsoup.nodes.Document
 import javax.swing.JOptionPane
 
 // Display a dialog box to ask for the user's entry
-def porciento = JOptionPane.showInputDialog(null, "enter porcentaje:", "Porciento Input", JOptionPane.QUESTION_MESSAGE)
+def porciento = JOptionPane.showInputDialog(null, "cuanto porciento:", "Porciento Input", JOptionPane.QUESTION_MESSAGE)
 //------------------------------------------------------------------------------------
 
 String cadenaHTML = node.getText()          //texto HTML crudo
