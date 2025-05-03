@@ -21,6 +21,7 @@
 |           La cadena html modificada conteniendo: width="xy" height="xy"
 |
 |   注意: Este programa requiere permiso de ejecucion de programas externos !!
+|			Presione ESC para cerrar	
 |
 |   私について: Homar Richard Orozco Apaza
 |               La Paz - Bolivia
