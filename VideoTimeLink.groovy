@@ -50,7 +50,13 @@ int result = JOptionPane.showConfirmDialog(null, panel, "Input Data", JOptionPan
 
 if (result == JOptionPane.OK_OPTION) {
 //     node.text = "Text: " + textField.text + "\nTotalSecs: " + (intField1.value * 60 + intField2.value)
-    String resul = textField.text + "#t=" + (intField1.value * 60 + intField2.value)
+    String resul = ""
+    if(intField1.value == 0){
+        resul = textField.text + "#t=" + intField2.value
+    }
+    else{
+        resul = textField.text + "#t=" + (intField1.value * 60 + intField2.value)
+    }
     setClipboardText(resul)
     c.statusInfo = resul
 }
