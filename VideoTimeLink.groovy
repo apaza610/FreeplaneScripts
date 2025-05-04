@@ -18,6 +18,7 @@ import javax.swing.JPanel
 import javax.swing.JTextField
 import javax.swing.JSpinner
 import javax.swing.SpinnerNumberModel
+import javax.swing.*
 
 import java.awt.Toolkit
 import java.awt.datatransfer.Clipboard
@@ -45,6 +46,11 @@ panel.add(new javax.swing.JLabel("mins:"))
 panel.add(intField1)
 panel.add(new javax.swing.JLabel("secs:"))
 panel.add(intField2)
+
+// Request focus on country field when the dialog shows
+SwingUtilities.invokeLater {
+    intField1.requestFocusInWindow()
+}
 
 // Show dialog
 int result = JOptionPane.showConfirmDialog(null, panel, "Input Data", JOptionPane.OK_CANCEL_OPTION)
