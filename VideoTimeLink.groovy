@@ -33,9 +33,10 @@ import java.awt.datatransfer.ClipboardOwner
 JPanel panel = new JPanel()
 
 String textFromClipboard = getClipboardText()
+textFromClipboard = textFromClipboard.replaceAll("#.*", "")     // delete time if string contains time
 JTextField textField = new JTextField(textFromClipboard, 20)
-JSpinner intField1 = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1))
-JSpinner intField2 = new JSpinner(new SpinnerNumberModel(0, 0, 1000, 1))
+JTextField intField1 = new JTextField("", 4)
+JTextField intField2 = new JTextField("", 4)
 
 // Add components to panel
 panel.add(new javax.swing.JLabel("videoURL:"))
@@ -51,11 +52,11 @@ int result = JOptionPane.showConfirmDialog(null, panel, "Input Data", JOptionPan
 if (result == JOptionPane.OK_OPTION) {
 //     node.text = "Text: " + textField.text + "\nTotalSecs: " + (intField1.value * 60 + intField2.value)
     String resul = ""
-    if(intField1.value == 0){
-        resul = textField.text + "#t=" + intField2.value
+    if(intField1.text == ""){
+        resul = textField.text + "#t=" + Integer.parseInt(intField2.text)
     }
     else{
-        resul = textField.text + "#t=" + (intField1.value * 60 + intField2.value)
+        resul = textField.text + "#t=" + (Integer.parseInt(intField1.text) * 60 + Integer.parseInt(intField2.text))
     }
     setClipboardText(resul)
     c.statusInfo = resul
